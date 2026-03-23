@@ -1,4 +1,7 @@
 pnpm-lock.yaml
+public/css/filament
+public/js/filament
+public/fonts/filament
 resources/js/components/ui/*
 resources/views/mail/*
 .agents/
