@@ -2,16 +2,14 @@
 
 declare(strict_types=1);
 
-namespace App\Filament\Resources\Users\Schemas;
+namespace App\Filament\Resources\Administrators\Schemas;
 
-use App\Enums\UserRole;
 use App\Models\User;
-use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Schemas\Schema;
 use Illuminate\Support\Facades\Hash;
 
-final class UserForm
+final class AdministratorForm
 {
     public static function configure(Schema $schema): Schema
     {
@@ -37,11 +35,6 @@ final class UserForm
                     ->required(fn (string $operation): bool => $operation === 'create')
                     ->dehydrateStateUsing(fn (string $state): string => Hash::make($state))
                     ->dehydrated(fn (?string $state): bool => filled($state)),
-
-                Select::make('role')
-                    ->options(UserRole::class)
-                    ->required()
-                    ->default(UserRole::Customer),
             ]);
     }
 }

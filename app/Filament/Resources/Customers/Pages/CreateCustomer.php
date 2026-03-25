@@ -2,15 +2,16 @@
 
 declare(strict_types=1);
 
-namespace App\Filament\Resources\Users\Pages;
+namespace App\Filament\Resources\Customers\Pages;
 
 use App\Data\UserData;
-use App\Filament\Resources\Users\UserResource;
+use App\Enums\UserRole;
+use App\Filament\Resources\Customers\CustomerResource;
 use Filament\Resources\Pages\CreateRecord;
 
-final class CreateUser extends CreateRecord
+final class CreateCustomer extends CreateRecord
 {
-    protected static string $resource = UserResource::class;
+    protected static string $resource = CustomerResource::class;
 
     /**
      * @param  array<string, mixed>  $data
@@ -18,7 +19,7 @@ final class CreateUser extends CreateRecord
      */
     protected function mutateFormDataBeforeCreate(array $data): array
     {
-        $userData = UserData::from($data);
+        $userData = UserData::from([...$data, 'role' => UserRole::Customer]);
 
         return [
             ...$userData->toArray(),

@@ -2,16 +2,17 @@
 
 declare(strict_types=1);
 
-namespace App\Filament\Resources\Users\Pages;
+namespace App\Filament\Resources\Administrators\Pages;
 
 use App\Data\UserData;
-use App\Filament\Resources\Users\UserResource;
+use App\Enums\UserRole;
+use App\Filament\Resources\Administrators\AdministratorResource;
 use Filament\Actions\DeleteAction;
 use Filament\Resources\Pages\EditRecord;
 
-final class EditUser extends EditRecord
+final class EditAdministrator extends EditRecord
 {
-    protected static string $resource = UserResource::class;
+    protected static string $resource = AdministratorResource::class;
 
     protected function getHeaderActions(): array
     {
@@ -26,7 +27,7 @@ final class EditUser extends EditRecord
      */
     protected function mutateFormDataBeforeSave(array $data): array
     {
-        $userData = UserData::from($data);
+        $userData = UserData::from([...$data, 'role' => UserRole::Admin]);
 
         $result = $userData->toArray();
 

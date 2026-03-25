@@ -7,7 +7,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
-final class AdminSeeder extends Seeder
+final class AdministratorSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -23,13 +23,13 @@ final class AdminSeeder extends Seeder
         $password = env('ADMIN_PASSWORD');
 
         if (! $email || ! $name || ! $password) {
-            $this->command->warn('AdminSeeder skipped: ADMIN_EMAIL, ADMIN_NAME, and ADMIN_PASSWORD must all be set.');
+            $this->command->warn('AdministratorSeeder skipped: ADMIN_EMAIL, ADMIN_NAME, and ADMIN_PASSWORD must all be set.');
 
             return;
         }
 
         if (User::where('email', $email)->exists()) {
-            $this->command->info("AdminSeeder skipped: admin user [{$email}] already exists.");
+            $this->command->info("AdministratorSeeder skipped: admin user [{$email}] already exists.");
 
             return;
         }
