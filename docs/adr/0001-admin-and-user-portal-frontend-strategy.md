@@ -25,7 +25,7 @@
 
 ## 1. Context
 
-This is a Laravel-based pet shop application in its early stages (auth scaffolding only, no domain models built yet). The application requires two distinct portals: a customer-facing storefront and an internal back-office for managing the business.
+This is a Laravel-based Srinil Shop application in its early stages (auth scaffolding only, no domain models built yet). The application requires two distinct portals: a customer-facing storefront and an internal back-office for managing the business.
 
 A deliberate decision was needed at this point — before any domain features are built — to avoid committing weeks of work to a frontend strategy that would later need to be discarded or rewritten.
 
